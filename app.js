@@ -13,6 +13,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var searchRouter = require('./routes/search');
+var movieDetailsRouter = require('./routes/moviedetails');
 
 var app = express();
 
@@ -39,6 +40,7 @@ app.use(session ({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
+app.use('/moviedetails', movieDetailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
