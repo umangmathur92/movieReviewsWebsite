@@ -2,15 +2,19 @@ var express = require('express');
 var router = express.Router();
 var dbConnection = require('../db/database');
 
-/* GET users listing. */
 router.post('/', function(req, res, next) {
     var key = req.body.search_query;
     var sortOrder = req.body.order_by;
     var year = req.body.year;
+    year = (year==='-') ? undefined : year;
     var popularity = req.body.rating;
+    popularity = (popularity==='-') ? undefined : popularity;
     popularity = (popularity===undefined) ? 1 : popularity;
     key = (key===undefined) ? '' : key;
     sortOrder = (sortOrder===undefined) ? 'DESC' : sortOrder;//ASC or DESC
+
+    console.log('vals: ' + sortOrder + ', year: ' + year + ', popularity: ' + popularity);
+
     var term = "'" + key + "%'"
     var query = 'SELECT m.mid, m.name, m.rel_date, m.url, m.description, AVG(score) AS avg_score ' + 
     'FROM movie_directs m, review_refersto_writes r ' +
