@@ -22,6 +22,19 @@ router.get('/:mid', function(req, res, next) {
     });
 });
 
+router.post('/', function(req, res, next) {
+    var midd = req.body.mid;
+    var query = 'SELECT * FROM review_refersto_writes where mid=' + midd;
+    console.log(query);
+    dbConnection.query(query, function(err, rows, fields) {
+        if (!err) {
+            res.send(rows);
+        } else {
+            res.send('Error while performing Query.');
+        }
+    });
+});
+
 function getFormattedDateString(inputDate) {
 	return dateFormat(inputDate, 'mmmm d, yyyy');
 }
