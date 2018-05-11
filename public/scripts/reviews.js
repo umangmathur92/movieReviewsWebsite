@@ -28,6 +28,10 @@ function generateListings(reviewList) {
     });
 }
 
+function submitReview() {
+    window.alert('Submit a review here !');
+}
+
 function getFormattedDateString(inputDateStr) {
 	//Input date string format: YYYY-MM-DDTHH:MM:SSZ
 	var date = Date.parse(inputDateStr); 
