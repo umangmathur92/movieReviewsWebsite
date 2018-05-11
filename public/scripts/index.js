@@ -1,26 +1,26 @@
 $(document).ready(function () {
-	fetchListings();
+	searchMovieDatabase();
 	$('select').formSelect();
 
 	$("form").submit(function () {
-		searchListings();
+		searchMovieDatabase();
 		return false;
 	});
 
 	$("#apply_filter_button").click(function(){
-		searchListings();
+		searchMovieDatabase();
 	});
 
 });
 
-fetchListings = () => {
-	$.get("/search", function (response) {
+function searchMovieDatabase() {
+    $.post("/search/", function (response) {
         generateListings(response);
 	});
 }
 
-generateListings = (list) => {
-	list.forEach(listing => {
+function generateListings(list) {
+    list.forEach(listing => {
 		$('.search_ul').append(
 			'<li class="search_li">' +       
 			'<img src="' + listing.url + '">' + '</img>' +
@@ -28,5 +28,5 @@ generateListings = (list) => {
 			'<p class="li_description">' + listing.description + '</p>' +     
 			'</li>'
 		);
-	})
+	});
 }
