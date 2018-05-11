@@ -13,9 +13,7 @@ function searchMovieDatabase() {
     const year = $("#btnYearDropdown").text().trim();
     const rating = $("#btnPopularityDropdown").text().trim().charAt(0);
     var sortOrder = $("#btnSortingDropdown").text().trim();
-    window.alert('yyy: ' + sortOrder);
     sortOrder = (sortOrder=='Ascending') ? 'ASC' : 'DESC';
-    window.alert('yyy: ' + sortOrder);
     $("#search_ul").empty();
     const body = {
         search_query: key, 
