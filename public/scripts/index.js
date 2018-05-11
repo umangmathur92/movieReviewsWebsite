@@ -1,3 +1,5 @@
+var searchResults;
+
 $(document).ready(function () {
     populateYearSelectionDropdownList();
     populateRatingSelectionDropdownList();
@@ -22,6 +24,7 @@ function searchMovieDatabase() {
         rating: rating
 	};
     $.post("/search/", body, function (response) {
+        searchResults = response;
         generateListings(response);
 	});
 }
@@ -37,7 +40,8 @@ function generateListings(movieList) {
 			'<p class="li_description">' + movie.description + '</p>' +     
 			'</li>'
 		);
-	});
+    });
+    setUpListingListeners(movieList);
 }
 
 function populateRatingSelectionDropdownList() {
@@ -123,4 +127,12 @@ function getFormattedDateString(inputDateStr) {
 	//Input date string format: YYYY-MM-DDTHH:MM:SSZ
 	var date = Date.parse(inputDateStr); 
 	return moment(date).format('MMMM DD, YYYY');
+}
+
+function setUpListingListeners(movieList) {
+    $('.search_li').click(function () {
+        let index = $(this).index();
+        let movie = movieList[index];
+        window.open('/moviedetails' + '/' + movie.mid);
+	});
 }
