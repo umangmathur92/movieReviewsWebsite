@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var dbConnection = require('../db/database');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  dbConnection.query('SELECT * from users', function(err, rows, fields) {
+    if (!err) {
+      res.send(rows);
+    } else {
+      res.send('Error while performing Query.');
+    }
+  });
 });
 
 module.exports = router;
