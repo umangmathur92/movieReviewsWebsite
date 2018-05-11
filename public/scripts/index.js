@@ -1,6 +1,7 @@
 $(document).ready(function () {
     populateYearSelectionDropdownList();
     populateRatingSelectionDropdownList();
+    populateSortingSelectionDropdownList();
 	searchMovieDatabase();
     $(btnSearch).click(function () {
         searchMovieDatabase();
@@ -10,11 +11,15 @@ $(document).ready(function () {
 function searchMovieDatabase() {
     const key = $("#txtSearch").val().trim();
     const year = $("#btnYearDropdown").text().trim();
-    const rating = $("#btnPopularityDropdown").text().charAt(0);
+    const rating = $("#btnPopularityDropdown").text().trim().charAt(0);
+    var sortOrder = $("#btnSortingDropdown").text().trim();
+    window.alert('yyy: ' + sortOrder);
+    sortOrder = (sortOrder=='Ascending') ? 'ASC' : 'DESC';
+    window.alert('yyy: ' + sortOrder);
     $("#search_ul").empty();
     const body = {
         search_query: key, 
-        order_by: 'DESC',
+        order_by: sortOrder,
         year: year,
         rating: rating
 	};
@@ -88,6 +93,31 @@ function populateYearSelectionDropdownList() {
         });
         yearDropdownList.appendChild(anchorElement);
     }
+    return anchorElement;
+}
+
+function populateSortingSelectionDropdownList() {
+    var yearDropdownList = document.getElementById('sortingDropdown');
+    let anchorElement = document.createElement('a');
+        anchorElement.setAttribute('class', 'dropdown-item');
+        anchorElement.setAttribute('onmouseover', '');
+        anchorElement.setAttribute('style', 'cursor: pointer;');
+        anchorElement.innerHTML = 'Ascending';
+        anchorElement.addEventListener("click", function (event) {
+            $("#btnSortingDropdown").text('Ascending');
+            $("#btnSortingDropdown").val('Ascending');
+        });
+        yearDropdownList.appendChild(anchorElement);
+        let anchorElement2 = document.createElement('a');
+        anchorElement2.setAttribute('class', 'dropdown-item');
+        anchorElement2.setAttribute('onmouseover', '');
+        anchorElement2.setAttribute('style', 'cursor: pointer;');
+        anchorElement2.innerHTML = 'Descending';
+        anchorElement2.addEventListener("click", function (event) {
+            $("#btnSortingDropdown").text('Descending');
+            $("#btnSortingDropdown").val('Descending');
+        });
+        yearDropdownList.appendChild(anchorElement2);
     return anchorElement;
 }
 

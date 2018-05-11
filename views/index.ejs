@@ -23,7 +23,7 @@
     <div class="container">
       <h1 align="center" style="font-weight: bold;">Movie Reviews System</h1>
       <p class="lead">Your authoritative source for movie and celebrity content. An online database of information related to world films, fan reviews and ratings.</p>
-      <div style="margin:0px auto; max-width: 450px; margin-top: 50px;"> 
+      <div style="margin:0px auto; max-width: 700px; margin-top: 50px;"> 
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
           <span class="input-group-btn">
@@ -36,10 +36,16 @@
           <div id="yearDropdown" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
           </div>
         </div>
-        <div class="btn-group" style="margin-top: 10px;">
+        <div class="btn-group" style="margin-right: 20px; margin-top: 10px;">
           <span style="padding-top: 5px;">Popularity/Rating: </span>
           <button id="btnPopularityDropdown" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-</button>
           <div id="popularityDropdown" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+          </div>
+        </div>
+        <div class="btn-group" style="margin-top: 10px;">
+          <span style="padding-top: 5px;">Sort Results: </span>
+          <button id="btnSortingDropdown" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descending</button>
+          <div id="sortingDropdown" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
           </div>
         </div>
       </div>
