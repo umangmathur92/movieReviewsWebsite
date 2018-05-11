@@ -15,7 +15,6 @@ $(document).ready(function () {
 
 fetchListings = () => {
 	$.get("/search", function (response) {
-        window.alert(JSON.stringify(response));
         generateListings(response);
 	});
 }
